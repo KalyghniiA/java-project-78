@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
+    id 'checkstyle'
     id 'com.adarshr.test-logger' version '3.2.0'
 }
 
@@ -42,3 +43,10 @@ jacocoTestReport {
     }
 }
 
+testlogger {
+    showStandardStreams true
+}
+
+checkstyle {
+    toolVersion '9.2.1'
+}

@@ -4,8 +4,10 @@ import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 
 public class Validator {
-    public StringSchema string() {
+    public final StringSchema string() {
         return new StringSchema();
     }
-    public NumberSchema number() { return new NumberSchema(); }
+    public final NumberSchema number() {
+        return new NumberSchema();
+    }
 }

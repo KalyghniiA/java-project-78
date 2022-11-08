@@ -4,21 +4,17 @@ public class StringSchema extends Schema {
     private String stringToCompare = "";
     private int minimalLength = 0;
 
-    public boolean isValid(Object value) {
-        return false;
-    }
-
-    public StringSchema contains(String forComparison) {
+    public final StringSchema contains(String forComparison) {
         stringToCompare = forComparison;
         return this;
     }
 
-    public void minLength(int length) {
+    public final void minLength(int length) {
         minimalLength = length;
     }
 
-    public boolean isValid(String value) {
-        if (isRequired) {
+    public final boolean isValid(String value) {
+        if (getIsRequired()) {
             if (value == null || value.equals("")) {
                 return false;
             }

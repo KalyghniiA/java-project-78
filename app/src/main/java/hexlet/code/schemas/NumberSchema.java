@@ -1,24 +1,24 @@
 package hexlet.code.schemas;
 
-public class NumberSchema extends Schema{
+public class NumberSchema extends Schema {
     private boolean isPositive = false;
     private boolean isRange = false;
     private int minRange;
     private int maxRange;
 
-    public NumberSchema positive() {
+    public final NumberSchema positive() {
         isPositive = true;
         return this;
     }
 
-    public void range(int minRange, int maxRange) {
+    public final void range(int minimalRange, int maximumRange) {
         isRange = true;
-        this.minRange = minRange;
-        this.maxRange = maxRange;
+        this.minRange = minimalRange;
+        this.maxRange = maximumRange;
     }
 
-    public boolean isValid(Integer value) {
-        if (isRequired && value == null) {
+    public final boolean isValid(Integer value) {
+        if (getIsRequired() && value == null) {
             return false;
         }
 
