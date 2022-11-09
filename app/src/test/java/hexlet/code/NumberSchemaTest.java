@@ -9,10 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 
 public class NumberSchemaTest {
-    private static final int TESTING_NUMBER_10 = 10;
-    private static final int TESTING_NUMBER_5 = 5;
-    private static final int TESTING_NUMBER_4 = 4;
-    private static final int TESTING_NUMBER_11 = 11;
+    private static final Integer TESTING_NUMBER_10 = 10;
+    private static final Integer TESTING_NUMBER_5 = 5;
+    private static final Integer TESTING_NUMBER_4 = 4;
+    private static final Integer TESTING_NUMBER_11 = 11;
     @Test
     public void testSchema1() {
         Validator v = new Validator();
