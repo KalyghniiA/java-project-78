@@ -41,7 +41,7 @@ public class MapSchema extends BaseSchema {
     }
 
     @Override
-    public final BaseSchema required() {
+    public final MapSchema required() {
         getPredicateList().add((value) -> isRequired(value));
         setRequired(true);
         return this;

@@ -32,7 +32,7 @@ public class StringSchema extends BaseSchema {
     }
 
     @Override
-    public final BaseSchema required() {
+    public final StringSchema required() {
         getPredicateList().add((value) -> isRequired(value));
         setRequired(true);
         return this;

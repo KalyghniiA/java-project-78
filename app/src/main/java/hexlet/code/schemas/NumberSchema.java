@@ -35,7 +35,7 @@ public class NumberSchema extends BaseSchema {
     }
 
     @Override
-    public final BaseSchema required() {
+    public final NumberSchema required() {
         getPredicateList().add((value) -> isRequired(value));
         setRequired(true);
         return this;
