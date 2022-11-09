@@ -32,14 +32,14 @@ public class NumberSchema extends BaseSchema {
 
     private boolean isPositive(Integer value) {
         if (value == null) {
-            return positive;
+            return true;
         }
         return positive && value >= 0;
     }
 
     private boolean isRange(Integer value) {
         if (value == null) {
-            return range && (0 >= minRange && 0 <= maxRange);
+            return false;
         }
         return range && (value >= minRange && value <= maxRange);
 
@@ -57,7 +57,6 @@ public class NumberSchema extends BaseSchema {
         if (getRequired()) {
             return value != null && value instanceof Integer;
         }
-
         return true;
     }
 }
