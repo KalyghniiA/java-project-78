@@ -10,14 +10,24 @@ public class MapSchema extends BaseSchema {
     private Integer maxSize;
 
     public final MapSchema sizeof(Integer maximumSize) {
-        this.getPredicateList().add((value) -> isSize((Map<String, Object>) value));
+        this.getPredicateList().add((value) -> {
+            if (value instanceof Map<?, ?> || (!getRequired() && value == null)) {
+                return isSize((Map<String, Object>) value);
+            }
+            return false;
+        });
         this.size = true;
         this.maxSize = maximumSize;
         return this;
     }
 
     public final MapSchema shape(Map<String, BaseSchema> schemas) {
-        this.getPredicateList().add((value) -> isShape((Map<String, Object>) value));
+        this.getPredicateList().add((value) -> {
+            if (value instanceof Map<?, ?> || (!getRequired() && value == null)) {
+                return isShape((Map<String, Object>) value);
+            }
+            return false;
+        });
         schemasShape.putAll(schemas);
         return this;
     }

@@ -5,13 +5,23 @@ public class StringSchema extends BaseSchema {
     private int minimalLength = 0;
 
     public final StringSchema contains(String forComparison) {
-        this.getPredicateList().add((value) -> isContains((String) value));
+        this.getPredicateList().add((value) -> {
+            if (value instanceof String || (!getRequired() && value == null)) {
+                return isContains((String) value);
+            }
+            return false;
+        });
         stringToCompare = forComparison;
         return this;
     }
 
     public final StringSchema minLength(int length) {
-        this.getPredicateList().add((value) -> isMinimalLength((String) value));
+        this.getPredicateList().add((value) -> {
+            if (value instanceof String || (!getRequired() && value == null)) {
+                return isMinimalLength((String) value);
+            }
+            return false;
+        });
         minimalLength = length;
         return this;
     }
