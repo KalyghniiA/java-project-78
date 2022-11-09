@@ -32,9 +32,9 @@ public class NumberSchema extends BaseSchema {
 
     private boolean isPositive(Integer value) {
         if (value == null) {
-            return false;
+            return true;
         }
-        return positive && value >= 0;
+        return positive && value > 0;
     }
 
     private boolean isRange(Integer value) {

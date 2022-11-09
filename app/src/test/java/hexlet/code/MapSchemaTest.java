@@ -85,7 +85,7 @@ public class MapSchemaTest {
 
         Map<String, Object> human2 = new HashMap<>();
         human2.put("name", "Maya");
-        human2.put("age", TESTING_NUMBER_10);
+        human2.put("age", null);
 
 
         Map<String, Object> human3 = new HashMap<>();
