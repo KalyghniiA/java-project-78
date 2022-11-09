@@ -11,11 +11,7 @@ public abstract class BaseSchema {
 
 
 
-    public final BaseSchema required() {
-        getPredicateList().add((value) -> isRequired(value));
-        required = true;
-        return this;
-    }
+    protected abstract BaseSchema required();
 
     public final boolean isValid(Object value) {
         return predicateList.stream().allMatch(method -> method.test(value));
@@ -25,10 +21,15 @@ public abstract class BaseSchema {
         return required;
     }
 
+    public final void setRequired(boolean value) {
+        required = value;
+    }
+
     protected final List<Predicate> getPredicateList() {
         return predicateList;
     }
 
     protected abstract boolean isRequired(Object value);
+
 
 }
