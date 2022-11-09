@@ -26,7 +26,7 @@ public class StringSchema extends BaseSchema {
     }
 
     @Override
-    public final boolean isRequired(Object value) {
+    protected final boolean isRequired(Object value) {
         if (getRequired()) {
             return value != null && !value.toString().isEmpty();
         }

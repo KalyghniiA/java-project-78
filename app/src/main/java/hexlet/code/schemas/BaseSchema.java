@@ -20,14 +20,14 @@ public abstract class BaseSchema {
         return predicateList.stream().allMatch(method -> method.test(value));
     }
 
-    public final boolean getRequired() {
+    protected final boolean getRequired() {
         return required;
     }
 
-    public final List<Predicate> getPredicateList() {
+    protected final List<Predicate> getPredicateList() {
         return predicateList;
     }
 
-    abstract boolean isRequired(Object value);
+    protected abstract boolean isRequired(Object value);
 
 }

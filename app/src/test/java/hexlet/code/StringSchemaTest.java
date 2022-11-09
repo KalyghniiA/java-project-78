@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class StringSchemaTest {
 
-
-
     @Test
     public void testSchema1() {
         Validator v = new Validator();
