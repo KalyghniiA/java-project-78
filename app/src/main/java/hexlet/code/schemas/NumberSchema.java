@@ -24,22 +24,15 @@ public class NumberSchema extends BaseSchema {
         if (value == null) {
             return positive;
         }
-        if (value instanceof Integer) {
-            return positive && value >= 0;
-        }
-
-        return false;
+        return value instanceof Integer && positive && value >= 0;
     }
 
     private boolean isRange(Integer value) {
         if (value == null) {
             return range && (0 >= minRange && 0 <= maxRange);
         }
+        return value instanceof Integer && range && (value >= minRange && value <= maxRange);
 
-        if (value instanceof Integer) {
-            return range && (value >= minRange && value <= maxRange);
-        }
-        return false;
     }
 
     @Override
