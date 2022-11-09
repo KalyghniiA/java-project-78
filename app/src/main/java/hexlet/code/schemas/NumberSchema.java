@@ -21,11 +21,16 @@ public class NumberSchema extends BaseSchema {
     }
 
     private boolean isPositive(Integer value) {
-        System.out.println(positive);
+        if (value == null) {
+            return positive;
+        }
         return positive && value >= 0;
     }
 
     private boolean isRange(Integer value) {
+        if (value == null) {
+            return range && (0 >= minRange && 0 <= maxRange);
+        }
         return range && (value >= minRange && value <= maxRange);
     }
 

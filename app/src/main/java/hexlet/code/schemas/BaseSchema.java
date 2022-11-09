@@ -11,9 +11,10 @@ public abstract class BaseSchema {
 
 
 
-    public final void required() {
+    public final BaseSchema required() {
         getPredicateList().add((value) -> isRequired(value));
         required = true;
+        return this;
     }
 
     public final boolean isValid(Object value) {
