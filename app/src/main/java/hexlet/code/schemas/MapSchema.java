@@ -10,7 +10,7 @@ public class MapSchema extends BaseSchema {
     private Integer maxSize;
 
     public final MapSchema sizeof(Integer maximumSize) {
-        this.getPredicateList().add((value) -> {
+        this.additionPredicateToPredicateList((value) -> {
             if (value instanceof Map<?, ?> || (!getRequired() && value == null)) {
                 return isSize((Map<String, Object>) value);
             }
@@ -22,7 +22,7 @@ public class MapSchema extends BaseSchema {
     }
 
     public final MapSchema shape(Map<String, BaseSchema> schemas) {
-        this.getPredicateList().add((value) -> {
+        this.additionPredicateToPredicateList((value) -> {
             if (value instanceof Map<?, ?> || (!getRequired() && value == null)) {
                 return isShape((Map<String, Object>) value);
             }
@@ -52,7 +52,7 @@ public class MapSchema extends BaseSchema {
 
     @Override
     public final MapSchema required() {
-        getPredicateList().add((value) -> isRequired(value));
+        this.additionPredicateToPredicateList((value) -> isRequired(value));
         setRequired(true);
         return this;
     }

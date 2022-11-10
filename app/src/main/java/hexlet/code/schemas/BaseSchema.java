@@ -25,8 +25,12 @@ public abstract class BaseSchema {
         required = value;
     }
 
-    protected final List<Predicate> getPredicateList() {
+    private List<Predicate> getPredicateList() {
         return predicateList;
+    }
+
+    public final void additionPredicateToPredicateList(Predicate predicate) {
+        getPredicateList().add(predicate);
     }
 
     protected abstract boolean isRequired(Object value);

@@ -7,7 +7,7 @@ public class NumberSchema extends BaseSchema {
     private int maxRange;
 
     public final NumberSchema positive() {
-        this.getPredicateList().add((value) -> {
+        this.additionPredicateToPredicateList((value) -> {
             if (value instanceof Integer || (!getRequired() && value == null)) {
                 return isPositive((Integer) value);
             }
@@ -18,7 +18,7 @@ public class NumberSchema extends BaseSchema {
     }
 
     public final NumberSchema range(int minimalRange, int maximumRange) {
-        this.getPredicateList().add((value) -> {
+        this.additionPredicateToPredicateList((value) -> {
             if (value instanceof Integer || (!getRequired() && value == null)) {
                 return isRange((Integer) value);
             }
@@ -47,7 +47,7 @@ public class NumberSchema extends BaseSchema {
 
     @Override
     public final NumberSchema required() {
-        getPredicateList().add((value) -> isRequired(value));
+        this.additionPredicateToPredicateList((value) -> isRequired(value));
         setRequired(true);
         return this;
     }
