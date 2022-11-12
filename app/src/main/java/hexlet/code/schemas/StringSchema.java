@@ -6,7 +6,7 @@ public class StringSchema extends BaseSchema {
 
     public final StringSchema contains(String forComparison) {
         this.additionPredicateToPredicateList((value) -> {
-            if (value instanceof String || (!getRequired() && value == null)) {
+            if (value instanceof String) {
                 return isContains((String) value);
             }
             return false;
@@ -17,7 +17,7 @@ public class StringSchema extends BaseSchema {
 
     public final StringSchema minLength(int length) {
         this.additionPredicateToPredicateList((value) -> {
-            if (value instanceof String || (!getRequired() && value == null)) {
+            if (value instanceof String) {
                 return isMinimalLength((String) value);
             }
             return false;

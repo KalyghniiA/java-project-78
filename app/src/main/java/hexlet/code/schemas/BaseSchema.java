@@ -14,6 +14,9 @@ public abstract class BaseSchema {
     protected abstract BaseSchema required();
 
     public final boolean isValid(Object value) {
+        if (!getRequired() && value == null) {
+            return true;
+        }
         return predicateList.stream().allMatch(method -> method.test(value));
     }
 

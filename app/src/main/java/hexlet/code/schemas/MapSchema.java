@@ -11,7 +11,7 @@ public class MapSchema extends BaseSchema {
 
     public final MapSchema sizeof(Integer maximumSize) {
         this.additionPredicateToPredicateList((value) -> {
-            if (value instanceof Map<?, ?> || (!getRequired() && value == null)) {
+            if (value instanceof Map<?, ?>) {
                 return isSize((Map<String, Object>) value);
             }
             return false;
@@ -23,7 +23,7 @@ public class MapSchema extends BaseSchema {
 
     public final MapSchema shape(Map<String, BaseSchema> schemas) {
         this.additionPredicateToPredicateList((value) -> {
-            if (value instanceof Map<?, ?> || (!getRequired() && value == null)) {
+            if (value instanceof Map<?, ?>) {
                 return isShape((Map<String, Object>) value);
             }
             return false;
