@@ -32,7 +32,7 @@ public abstract class BaseSchema {
         return predicateList;
     }
 
-    public final void additionPredicateToPredicateList(Predicate predicate) {
+    public final void addPredicateToPredicateList(Predicate predicate) {
         getPredicateList().add(predicate);
     }
 
