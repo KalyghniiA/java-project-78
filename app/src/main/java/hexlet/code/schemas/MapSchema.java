@@ -10,24 +10,14 @@ public class MapSchema extends BaseSchema {
     private Integer maxSize;
 
     public final MapSchema sizeof(Integer maximumSize) {
-        this.addPredicateToPredicateList((value) -> {
-            if (value instanceof Map<?, ?>) {
-                return isSize((Map<String, Object>) value);
-            }
-            return false;
-        });
+        this.addPredicateToPredicateList((value) -> isSize((Map<String, Object>) value));
         this.size = true;
         this.maxSize = maximumSize;
         return this;
     }
 
     public final MapSchema shape(Map<String, BaseSchema> schemas) {
-        this.addPredicateToPredicateList((value) -> {
-            if (value instanceof Map<?, ?>) {
-                return isShape((Map<String, Object>) value);
-            }
-            return false;
-        });
+        this.addPredicateToPredicateList((value) -> isShape((Map<String, Object>) value));
         schemasShape.putAll(schemas);
         return this;
     }
@@ -43,6 +33,7 @@ public class MapSchema extends BaseSchema {
     }
 
     private boolean isShapeToSchema(BaseSchema schema, Object value) {
+        System.out.println(schema.isValid(value));
         return schema.isValid(value);
     }
 
@@ -64,5 +55,10 @@ public class MapSchema extends BaseSchema {
         }
 
         return true;
+    }
+
+    @Override
+    protected final boolean isValidType(Object value) {
+        return value instanceof Map<?, ?>;
     }
 }

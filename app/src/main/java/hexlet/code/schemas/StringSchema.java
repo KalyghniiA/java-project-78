@@ -5,23 +5,13 @@ public class StringSchema extends BaseSchema {
     private int minimalLength = 0;
 
     public final StringSchema contains(String forComparison) {
-        this.addPredicateToPredicateList((value) -> {
-            if (value instanceof String) {
-                return isContains((String) value);
-            }
-            return false;
-        });
+        this.addPredicateToPredicateList((value) -> isContains((String) value));
         stringToCompare = forComparison;
         return this;
     }
 
     public final StringSchema minLength(int length) {
-        this.addPredicateToPredicateList((value) -> {
-            if (value instanceof String) {
-                return isMinimalLength((String) value);
-            }
-            return false;
-        });
+        this.addPredicateToPredicateList((value) ->  isMinimalLength((String) value));
         minimalLength = length;
         return this;
     }
@@ -54,5 +44,10 @@ public class StringSchema extends BaseSchema {
             return value != null && !value.toString().isEmpty();
         }
         return true;
+    }
+
+    @Override
+    protected final boolean isValidType(Object value) {
+        return value instanceof String && !value.toString().isEmpty();
     }
 }
