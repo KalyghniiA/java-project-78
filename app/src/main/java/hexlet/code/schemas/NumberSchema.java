@@ -37,21 +37,12 @@ public class NumberSchema extends BaseSchema {
 
     @Override
     public final NumberSchema required() {
-        this.addPredicateToPredicateList((value) -> isRequired(value));
         setRequired(true);
         return this;
     }
 
     @Override
-    protected final boolean isRequired(Object value) {
-        if (getRequired()) {
-            return value != null && value instanceof Integer;
-        }
-        return true;
-    }
-
-    @Override
-    protected final boolean isValidType(Object value) {
+    public final boolean isValidType(Object value) {
         return value instanceof Integer;
     }
 }

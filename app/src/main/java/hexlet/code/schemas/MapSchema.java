@@ -33,7 +33,6 @@ public class MapSchema extends BaseSchema {
     }
 
     private boolean isShapeToSchema(BaseSchema schema, Object value) {
-        System.out.println(schema.isValid(value));
         return schema.isValid(value);
     }
 
@@ -43,22 +42,12 @@ public class MapSchema extends BaseSchema {
 
     @Override
     public final MapSchema required() {
-        this.addPredicateToPredicateList((value) -> isRequired(value));
         setRequired(true);
         return this;
     }
 
     @Override
-    protected final boolean isRequired(Object value) {
-        if (getRequired()) {
-            return value != null && value instanceof Map<?, ?>;
-        }
-
-        return true;
-    }
-
-    @Override
-    protected final boolean isValidType(Object value) {
+    public final boolean isValidType(Object value) {
         return value instanceof Map<?, ?>;
     }
 }

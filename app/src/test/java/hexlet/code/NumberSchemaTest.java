@@ -17,8 +17,8 @@ public class NumberSchemaTest {
     public void testSchema1() {
         Validator v = new Validator();
         NumberSchema schema = v.number();
-
         assertTrue(schema.isValid(null));
+
     }
 
     @Test

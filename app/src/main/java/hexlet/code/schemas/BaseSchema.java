@@ -36,15 +36,12 @@ public abstract class BaseSchema {
         getPredicateList().add(predicate);
     }
 
-    protected abstract boolean isRequired(Object value);
-
     private boolean checkInput(Object value) {
-        if (!getRequired() && isValidType(value)) {
+        if (getRequired() && !isValidType(value)) {
             return false;
         }
-
         return true;
-    }
+    };
 
     protected abstract boolean isValidType(Object value);
 }

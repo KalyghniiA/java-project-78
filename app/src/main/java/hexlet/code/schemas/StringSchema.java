@@ -33,17 +33,8 @@ public class StringSchema extends BaseSchema {
 
     @Override
     public final StringSchema required() {
-        this.addPredicateToPredicateList((value) -> isRequired(value));
         setRequired(true);
         return this;
-    }
-
-    @Override
-    protected final boolean isRequired(Object value) {
-        if (getRequired()) {
-            return value != null && !value.toString().isEmpty();
-        }
-        return true;
     }
 
     @Override

@@ -61,7 +61,6 @@ public class MapSchemaTest {
                 () -> assertFalse(schema.isValid(data)),
                 () -> assertTrue(() -> {
                     data.put("key2", "value2");
-
                     return schema.isValid(data);
                 })
         );
@@ -97,10 +96,9 @@ public class MapSchemaTest {
         human4.put("name", "Valya");
         human4.put("age", -TESTING_NUMBER_10);
 
-
         assertAll(
-                /*() -> assertTrue(schema.isValid(human1)),
-                () -> assertTrue(schema.isValid(human2)),*/
+                () -> assertTrue(schema.isValid(human1)),
+                () -> assertTrue(schema.isValid(human2)),
                 () -> assertFalse(schema.isValid(human3)),
                 () -> assertFalse(schema.isValid(human4))
         );
