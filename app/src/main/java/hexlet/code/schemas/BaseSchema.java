@@ -14,10 +14,18 @@ public abstract class BaseSchema {
     protected abstract BaseSchema required();
 
     public final boolean isValid(Object value) {
-        addPredicateToPredicateList((elem) -> checkInput(elem));
-        return predicateList
-                .stream()
-                .allMatch(method -> method.test(value));
+        //addPredicateToPredicateList((elem) -> checkInput(elem));
+        if (!getRequired() && !isValidType(value)) {
+            return true;
+        }
+
+        if (isValidType(value)) {
+            return predicateList
+                    .stream()
+                    .allMatch(method -> method.test(value));
+        }
+
+        return false;
     }
 
     protected final boolean getRequired() {
