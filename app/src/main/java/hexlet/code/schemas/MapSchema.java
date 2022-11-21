@@ -5,14 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapSchema extends BaseSchema {
-    private boolean size = false;
     private Map<String, BaseSchema> schemasShape = new HashMap<>();
-    private Integer maxSize;
 
-    public final MapSchema sizeof(Integer maximumSize) {
-        this.addPredicateToPredicateList((value) -> isSize((Map<String, Object>) value));
-        this.size = true;
-        this.maxSize = maximumSize;
+    public final MapSchema sizeof(Integer size) {
+        this.addPredicateToPredicateList((value) -> isSize((Map<String, Object>) value, size));
         return this;
     }
 
@@ -32,8 +28,8 @@ public class MapSchema extends BaseSchema {
         return true;
     }
 
-    private boolean isSize(Map<String, Object> value) {
-        return value.size() == maxSize;
+    private boolean isSize(Map<String, Object> value, int size) {
+        return value.size() == size;
     }
 
     @Override

@@ -2,7 +2,6 @@ package hexlet.code.schemas;
 
 public class StringSchema extends BaseSchema {
     private String stringToCompare = "";
-    private int minimalLength = 0;
 
     public final StringSchema contains(String forComparison) {
         this.addPredicateToPredicateList((value) -> isContains((String) value));
@@ -11,8 +10,7 @@ public class StringSchema extends BaseSchema {
     }
 
     public final StringSchema minLength(int length) {
-        this.addPredicateToPredicateList((value) ->  isMinimalLength((String) value));
-        minimalLength = length;
+        this.addPredicateToPredicateList((value) ->  isMinimalLength((String) value, length));
         return this;
     }
 
@@ -21,7 +19,7 @@ public class StringSchema extends BaseSchema {
         return value.contains(stringToCompare);
     }
 
-    private boolean isMinimalLength(String value) {
+    private boolean isMinimalLength(String value, int minimalLength) {
         return value.length() >= minimalLength;
     }
 

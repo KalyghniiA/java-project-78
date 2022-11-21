@@ -1,31 +1,22 @@
 package hexlet.code.schemas;
 
 public class NumberSchema extends BaseSchema {
-    private boolean positive = false;
-    private boolean range = false;
-    private int minRange;
-    private int maxRange;
-
     public final NumberSchema positive() {
         this.addPredicateToPredicateList((value) -> isPositive((Integer) value));
-        positive = true;
         return this;
     }
 
-    public final NumberSchema range(int minimalRange, int maximumRange) {
-        this.addPredicateToPredicateList((value) -> isRange((Integer) value));
-        range = true;
-        this.minRange = minimalRange;
-        this.maxRange = maximumRange;
+    public final NumberSchema range(int minRange, int maxRange) {
+        this.addPredicateToPredicateList((value) -> isRange((Integer) value, minRange, maxRange));
         return this;
     }
 
     private boolean isPositive(Integer value) {
-        return positive && value > 0;
+        return value > 0;
     }
 
-    private boolean isRange(Integer value) {
-        return range && (value >= minRange && value <= maxRange);
+    private boolean isRange(Integer value, int minRange, int maxRange) {
+        return value >= minRange && value <= maxRange;
 
     }
 
