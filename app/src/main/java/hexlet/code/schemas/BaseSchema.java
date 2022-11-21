@@ -14,7 +14,6 @@ public abstract class BaseSchema {
     protected abstract BaseSchema required();
 
     public final boolean isValid(Object value) {
-        //addPredicateToPredicateList((elem) -> checkInput(elem));
         if (!getRequired() && !isValidType(value)) {
             return true;
         }
@@ -43,13 +42,6 @@ public abstract class BaseSchema {
     public final void addPredicateToPredicateList(Predicate predicate) {
         getPredicateList().add(predicate);
     }
-
-    private boolean checkInput(Object value) {
-        if (getRequired() && !isValidType(value)) {
-            return false;
-        }
-        return true;
-    };
 
     protected abstract boolean isValidType(Object value);
 }
