@@ -24,16 +24,12 @@ public class MapSchema extends BaseSchema {
 
     private boolean isShape(Map<String, Object> value) {
         for (Map.Entry elem: value.entrySet()) {
-            if (!isShapeToSchema(schemasShape.get(elem.getKey()), elem.getValue())) {
+            if (!schemasShape.get(elem.getKey()).isValid(elem.getValue())) {
                 return false;
             }
         }
 
         return true;
-    }
-
-    private boolean isShapeToSchema(BaseSchema schema, Object value) {
-        return schema.isValid(value);
     }
 
     private boolean isSize(Map<String, Object> value) {

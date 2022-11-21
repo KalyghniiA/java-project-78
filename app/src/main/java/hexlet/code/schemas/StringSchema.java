@@ -18,16 +18,10 @@ public class StringSchema extends BaseSchema {
 
 
     private boolean isContains(String value) {
-        if (value == null) {
-            return false;
-        }
         return value.contains(stringToCompare);
     }
 
     private boolean isMinimalLength(String value) {
-        if (value == null) {
-            return false;
-        }
         return value.length() >= minimalLength;
     }
 

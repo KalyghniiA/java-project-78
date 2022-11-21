@@ -21,16 +21,10 @@ public class NumberSchema extends BaseSchema {
     }
 
     private boolean isPositive(Integer value) {
-        if (value == null) {
-            return true;
-        }
         return positive && value > 0;
     }
 
     private boolean isRange(Integer value) {
-        if (value == null) {
-            return false;
-        }
         return range && (value >= minRange && value <= maxRange);
 
     }
